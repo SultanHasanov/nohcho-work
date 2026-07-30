@@ -1,0 +1,20 @@
+{
+  "name": "Нохчо Work",
+  "short_name": "Нохчо Work",
+  "description": "Биржа разнорабочих в Чеченской Республике",
+  "lang": "ru",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0A0B0A",
+  "theme_color": "#0A0B0A",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

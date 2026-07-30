@@ -1,0 +1,214 @@
+@import 'tailwindcss';
+
+/* Значения выписаны из прототипа docs/prototype/index.html.
+   Расшифровка — в docs/design-tokens.md. Другого источника цветов, радиусов,
+   шрифтов и размеров в проекте нет. */
+@theme {
+  --color-canvas: #050605;
+  --color-bg: #0a0b0a;
+  --color-surface: #151815;
+  --color-surface-2: #1e221e;
+  --color-nav: #101210;
+
+  --color-accent: #4caf50;
+  --color-accent-pressed: #3d8b40;
+  --color-accent-soft: rgba(76, 175, 80, 0.14);
+
+  --color-warning-soft: rgba(232, 163, 61, 0.16);
+  --color-amber: #ffc02d;
+  --color-warning: #e8a33d;
+  --color-danger: #e5484d;
+
+  --color-line: #2a2e2a;
+  --color-text: #ffffff;
+  --color-second: #9ba29b;
+  --color-muted: #6b716b;
+  --color-icon-off: #4b524b;
+  --color-avatar: #2e5e2e;
+  /* Время на своём пузыре в чате — фрейм 12. */
+  --color-own-time: #a8c9a8;
+
+  --radius-card: 14px;
+  --radius-btn: 12px;
+  --radius-tile: 9px;
+  --radius-pill: 999px;
+  --radius-phone: 44px;
+
+  --font-sans: 'Montserrat', Helvetica, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Кегли, встречающиеся в прототипе. Своих размеров в разметке не выдумываем. */
+  --text-micro: 9px;
+  --text-tiny: 10px;
+  --text-meta: 11px;
+  --text-note: 12px;
+  --text-caption: 13px;
+  --text-control: 14px;
+  --text-lead: 15px;
+  --text-body: 16px;
+  --text-card-title: 18px;
+  --text-logo-header: 19px;
+  --text-screen-title: 20px;
+  --text-price: 22px;
+  --text-logo-sm: 26px;
+  --text-logo: 34px;
+
+  --spacing-gutter: 16px;
+  --spacing-card: 14px;
+
+  /* Базовая ширина макета. */
+  --container-phone: 390px;
+
+  --size-control: 44px;
+  --size-field: 48px;
+  --size-segment: 38px;
+  --size-thumb: 84px;
+  --size-textarea: 82px;
+  --size-cta: 52px;
+  --size-cta-tall: 56px;
+  --size-statusbar: 56px;
+  --size-tabbar: 86px;
+  --size-tabrow: 64px;
+
+  --animate-shimmer: nw-shimmer 1.4s linear infinite;
+  --animate-pulse-dot: nw-pulse 2s ease-out infinite;
+}
+
+@keyframes nw-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes nw-shimmer {
+  0% {
+    background-position: -220px 0;
+  }
+  100% {
+    background-position: 320px 0;
+  }
+}
+
+/* Размеры из макета, которые Tailwind не выводит из токенов автоматически. */
+@utility h-control {
+  height: var(--size-control);
+}
+@utility min-h-control {
+  min-height: var(--size-control);
+}
+@utility min-w-control {
+  min-width: var(--size-control);
+}
+@utility h-cta {
+  height: var(--size-cta);
+}
+@utility h-cta-tall {
+  height: var(--size-cta-tall);
+}
+@utility size-cta-tall {
+  width: var(--size-cta-tall);
+  height: var(--size-cta-tall);
+}
+@utility h-field {
+  height: var(--size-field);
+}
+@utility h-segment {
+  height: var(--size-segment);
+}
+@utility size-thumb {
+  width: var(--size-thumb);
+  height: var(--size-thumb);
+}
+@utility min-h-textarea {
+  min-height: var(--size-textarea);
+}
+@utility h-statusbar {
+  height: var(--size-statusbar);
+}
+@utility h-tabbar {
+  height: var(--size-tabbar);
+}
+@utility h-tabrow {
+  height: var(--size-tabrow);
+}
+
+/* Фоновые слои экрана входа — фрейм 01 прототипа. */
+@utility bg-hatch {
+  background: repeating-linear-gradient(115deg, #101410 0 12px, #0c0f0c 12px 24px);
+}
+@utility bg-glow {
+  background: radial-gradient(
+    120% 60% at 50% 0%,
+    rgba(76, 175, 80, 0.1),
+    rgba(10, 11, 10, 0) 70%
+  );
+}
+/* Пузыри чата — фрейм 12: скошен угол со стороны автора. */
+@utility rounded-bubble-in {
+  border-radius: var(--radius-card) var(--radius-card) var(--radius-card) 2px;
+}
+@utility rounded-bubble-out {
+  border-radius: var(--radius-card) var(--radius-card) 2px var(--radius-card);
+}
+
+/* Штриховка превью заказа 84×84 — фрейм 03. */
+@utility bg-hatch-thumb {
+  background: repeating-linear-gradient(135deg, #1e221e 0 6px, #191d19 6px 12px);
+}
+@utility shadow-fab {
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.32);
+}
+@utility skeleton {
+  background: linear-gradient(90deg, #1e221e, #262b26, #1e221e);
+  background-size: 320px 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* Безопасные зоны выреза и жестовой полосы. */
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@layer base {
+  html {
+    background: var(--color-canvas);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-canvas);
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  /* Системные пикеры даты и времени — в тёмной схеме. */
+  input[type='datetime-local'],
+  input[type='date'],
+  input[type='time'] {
+    color-scheme: dark;
+  }
+}

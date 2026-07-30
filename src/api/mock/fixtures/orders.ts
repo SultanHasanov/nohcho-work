@@ -1,0 +1,111 @@
+import type { Order } from '@/api/types';
+
+/** Время задаём смещением от текущего дня, чтобы подписи «Сегодня, 12:00» не устаревали. */
+function atHour(dayShift: number, hour: number, minute = 0): string {
+  const date = new Date();
+  date.setDate(date.getDate() + dayShift);
+  date.setHours(hour, minute, 0, 0);
+  return date.toISOString();
+}
+
+export const orders: Order[] = [
+  {
+    id: 'o-1',
+    title: 'Вынести строительный мусор',
+    description:
+      'После ремонта осталось около двадцати мешков и старая плитка. Нужно спустить с третьего этажа и загрузить в машину. Лифта нет.',
+    categoryId: 'cleanup',
+    price: 8000,
+    address: 'ул. А. Кадырова 128',
+    coords: { lat: 43.3182, lon: 45.6918 },
+    distance: 600,
+    startsAt: atHour(0, 12),
+    status: 'searching',
+    photos: [],
+    clientId: 'u-3',
+    seekerId: null,
+    createdAt: atHour(0, 8),
+  },
+  {
+    id: 'o-2',
+    title: 'Помочь с переездом',
+    description:
+      'Перевозим двухкомнатную квартиру в пределах города. Мебель разобрана, нужна погрузка и разгрузка. Машина своя.',
+    categoryId: 'moving',
+    price: 5500,
+    address: 'ул. Лорсанова 15',
+    coords: { lat: 43.3245, lon: 45.7011 },
+    distance: 1200,
+    startsAt: atHour(0, 14, 30),
+    status: 'assigned',
+    photos: [],
+    clientId: 'u-4',
+    seekerId: 'u-2',
+    createdAt: atHour(-1, 19),
+  },
+  {
+    id: 'o-3',
+    title: 'Покосить траву на участке',
+    description:
+      'Участок восемь соток за домом, трава высокая. Триммер и бензин предоставим на месте.',
+    categoryId: 'garden',
+    price: 3000,
+    address: 'ул. Назарбаева 42',
+    coords: { lat: 43.3096, lon: 45.6842 },
+    distance: 1500,
+    startsAt: atHour(0, 16),
+    status: 'in_progress',
+    photos: [],
+    clientId: 'u-3',
+    seekerId: 'u-1',
+    createdAt: atHour(-2, 11),
+  },
+  {
+    id: 'o-4',
+    title: 'Собрать мебель',
+    description: 'Два шкафа и комод, всё новое в упаковке, инструкции на месте.',
+    categoryId: 'furniture',
+    price: 4500,
+    address: 'пр. В. Путина 7',
+    coords: { lat: 43.3128, lon: 45.6957 },
+    distance: 2100,
+    startsAt: atHour(-1, 18),
+    status: 'done',
+    photos: [],
+    clientId: 'u-4',
+    seekerId: 'u-1',
+    createdAt: atHour(-4, 10),
+  },
+  {
+    id: 'o-5',
+    title: 'Разгрузить машину с цементом',
+    description: 'Тридцать мешков по пятьдесят килограммов, занести во двор.',
+    categoryId: 'moving',
+    price: 4000,
+    address: 'ул. Мира 61',
+    coords: { lat: 43.3271, lon: 45.6889 },
+    distance: 2600,
+    startsAt: atHour(1, 9),
+    status: 'searching',
+    photos: [],
+    clientId: 'u-3',
+    seekerId: null,
+    createdAt: atHour(0, 7),
+  },
+  {
+    id: 'o-6',
+    title: 'Демонтаж старой перегородки',
+    description: 'Кирпичная перегородка в четыре квадратных метра, мусор вывозим сами.',
+    categoryId: 'demolition',
+    price: 12000,
+    address: 'ул. Дьякова 24',
+    coords: { lat: 43.3339, lon: 45.7098 },
+    distance: 3400,
+    startsAt: atHour(2, 10),
+    status: 'searching',
+    photos: [],
+    clientId: 'u-4',
+    seekerId: null,
+    createdAt: atHour(-1, 16),
+  },
+];
