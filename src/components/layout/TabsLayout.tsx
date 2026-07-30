@@ -9,7 +9,7 @@ export function TabsLayout() {
   return (
     <AppShell>
       <StatusBarSpacer />
-      <main className="flex flex-1 flex-col">
+      <main className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
         <Outlet />
       </main>
       <TabBar />

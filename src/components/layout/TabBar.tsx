@@ -13,7 +13,7 @@ const tabs = [
 /** Нижняя панель из прототипа: пять слотов, средний отдан кнопке «Создать». */
 export function TabBar() {
   return (
-    <nav className="sticky bottom-0 h-tabbar shrink-0 border-t border-line bg-nav">
+    <nav className="relative h-tabbar shrink-0 border-t border-line bg-nav">
       <div className="absolute inset-x-0 top-0 flex h-tabrow">
         <TabLink {...tabs[0]} />
         <TabLink {...tabs[1]} />

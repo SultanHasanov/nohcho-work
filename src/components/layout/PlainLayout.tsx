@@ -6,7 +6,9 @@ import { AppShell } from '@/components/layout/AppShell';
 export function PlainLayout() {
   return (
     <AppShell>
-      <Outlet />
+      <main className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
+        <Outlet />
+      </main>
     </AppShell>
   );
 }

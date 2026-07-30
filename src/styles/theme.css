@@ -195,9 +195,15 @@
 
   body {
     margin: 0;
+    overflow: hidden;
     font-family: var(--font-sans);
     color: var(--color-text);
     background: var(--color-canvas);
+  }
+
+  #root {
+    height: 100dvh;
+    overflow: hidden;
   }
 
   button {
