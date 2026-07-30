@@ -24,7 +24,7 @@ export function CategorySheet({
         onClick={onClose}
         className="absolute inset-0 bg-canvas/70"
       />
-      <div className="relative flex w-full max-w-phone flex-col gap-1 rounded-t-card border-t border-line bg-bg px-gutter pt-card pb-7.5">
+      <div className="relative flex max-h-[85dvh] w-full flex-col gap-1 overflow-y-auto rounded-t-card border-t border-line bg-bg px-gutter pt-card pb-action-safe sm:max-w-phone">
         <span className="mx-auto mb-2 h-1.5 w-16 rounded-pill bg-line" />
         <p className="pb-1 text-meta font-bold tracking-wide text-second uppercase">
           Категория

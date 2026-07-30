@@ -18,7 +18,7 @@ export function Composer({ isSending, onSend }: ComposerProps) {
   }
 
   return (
-    <div className="sticky bottom-0 flex shrink-0 items-center gap-2.5 border-t border-line bg-bg px-gutter pt-3 pb-7 pb-safe">
+    <div className="sticky bottom-0 flex shrink-0 items-center gap-2.5 border-t border-line bg-bg px-gutter pt-3 pb-composer-safe">
       <label className="flex h-field flex-1 items-center gap-2.5 rounded-btn border border-line bg-surface px-card focus-within:border-accent">
         {/* Вложений в моках нет — скрепка нарисована и пока неактивна. */}
         <Paperclip
@@ -37,7 +37,7 @@ export function Composer({ isSending, onSend }: ComposerProps) {
           onKeyDown={(event) => {
             if (event.key === 'Enter') submit();
           }}
-          className="min-w-0 flex-1 bg-transparent text-lead font-medium text-text outline-none placeholder:text-muted"
+          className="min-w-0 flex-1 bg-transparent text-body font-medium text-text outline-none placeholder:text-muted"
         />
       </label>
 

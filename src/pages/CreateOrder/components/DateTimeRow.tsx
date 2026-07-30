@@ -18,7 +18,7 @@ export function DateTimeRow({ value, onChange }: DateTimeRowProps) {
           onChange(event.target.value);
         }}
         className={[
-          'w-full bg-transparent text-lead font-medium outline-none',
+          'min-w-0 w-full bg-transparent text-body font-medium outline-none',
           value === '' ? 'text-muted' : 'text-text',
         ].join(' ')}
       />

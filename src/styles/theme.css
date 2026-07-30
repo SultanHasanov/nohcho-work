@@ -135,7 +135,7 @@
   height: max(var(--size-statusbar), env(safe-area-inset-top));
 }
 @utility h-tabbar {
-  height: var(--size-tabbar);
+  height: calc(var(--size-tabbar) + env(safe-area-inset-bottom));
 }
 @utility h-tabrow {
   height: var(--size-tabrow);
@@ -179,6 +179,12 @@
 }
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
+}
+@utility pb-action-safe {
+  padding-bottom: max(34px, env(safe-area-inset-bottom));
+}
+@utility pb-composer-safe {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
 }
 
 @layer base {

@@ -37,7 +37,7 @@ const LoginPage = observer(function LoginPage() {
         </p>
       </div>
 
-      <div className="relative z-2 flex flex-col gap-3 px-gutter pb-8.5">
+      <div className="relative z-2 flex flex-col gap-3 px-gutter pb-action-safe">
         {session.error ? (
           <ErrorNote
             message={session.error}

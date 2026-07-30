@@ -51,7 +51,7 @@ const RolePage = observer(function RolePage() {
         />
       </div>
 
-      <div className="mt-auto flex flex-col gap-card px-gutter pb-8.5">
+      <div className="mt-auto flex flex-col gap-card px-gutter pb-action-safe">
         {session.error ? (
           <ErrorNote
             message={session.error}

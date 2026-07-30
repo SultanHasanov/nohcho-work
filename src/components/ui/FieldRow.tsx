@@ -60,7 +60,7 @@ export function InputRow({
         onChange={(event) => {
           onChange(event.target.value);
         }}
-        className="min-w-0 flex-1 bg-transparent text-lead font-medium text-text outline-none placeholder:text-muted"
+        className="min-w-0 flex-1 bg-transparent text-body font-medium text-text outline-none placeholder:text-muted"
       />
       <span className="flex shrink-0 items-center">{trailing}</span>
     </label>

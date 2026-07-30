@@ -25,7 +25,7 @@ const ChatPage = observer(function ChatPage() {
   const myId = session.user?.id;
 
   return (
-    <section className="flex flex-1 flex-col">
+    <section className="flex min-h-0 flex-1 flex-col">
       <StatusBarSpacer />
       <ChatHeader
         name={peer?.peerName ?? 'Диалог'}
@@ -41,7 +41,7 @@ const ChatPage = observer(function ChatPage() {
         />
       ) : null}
 
-      <div className="flex flex-1 flex-col gap-2.5 px-gutter pt-card pb-2">
+      <div className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto px-gutter pt-card pb-2">
         {chat.isLoading ? (
           <>
             <Skeleton className="h-12 w-8/12 self-start rounded-bubble-in" />
