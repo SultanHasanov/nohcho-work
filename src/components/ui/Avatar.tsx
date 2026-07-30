@@ -7,12 +7,7 @@ interface AvatarProps {
 }
 
 /** Буквенный аватар из фреймов 12 и 13. Фотографий в макете нет. */
-export function Avatar({
-  name,
-  sizeClass,
-  textClass,
-  isOnline = false,
-}: AvatarProps) {
+export function Avatar({ name, sizeClass, textClass, isOnline = false }: AvatarProps) {
   const letter = name.trim().charAt(0).toUpperCase();
 
   return (

@@ -40,7 +40,9 @@ export const MyOrdersList = observer(function MyOrdersList() {
     return (
       <EmptyState
         icon={<ClipboardList size={34} strokeWidth={1.8} aria-hidden="true" />}
-        title={myOrders.tab === 'active' ? 'Активных заказов нет' : 'Выполненных пока нет'}
+        title={
+          myOrders.tab === 'active' ? 'Активных заказов нет' : 'Выполненных пока нет'
+        }
         description={emptyText[myOrders.tab]}
       />
     );

@@ -1,7 +1,7 @@
 import { delay } from '@/api/mock/delay';
 import { orders as fixture } from '@/api/mock/fixtures/orders';
 import { currentUser } from '@/api/mock/fixtures/users';
-import type { Category, Order, OrderDraft, OrdersQuery } from '@/api/types';
+import type { Category, Order, OrderDraft, OrdersPeriod, OrdersQuery } from '@/api/types';
 import { categories as categoryFixture } from '@/api/mock/fixtures/categories';
 
 let orders: Order[] = [...fixture];
@@ -15,12 +15,45 @@ function matchesSearch(order: Order, search: string): boolean {
   );
 }
 
+function daysUntil(iso: string): number {
+  const start = new Date(iso);
+  start.setHours(0, 0, 0, 0);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.round((start.getTime() - today.getTime()) / 86_400_000);
+}
+
+function matchesPeriod(order: Order, period: OrdersPeriod): boolean {
+  if (period === 'any') return true;
+  const shift = daysUntil(order.startsAt);
+  if (period === 'today') return shift === 0;
+  if (period === 'tomorrow') return shift === 1;
+  return shift >= 0 && shift < 7;
+}
+
 export async function getOrders(query: OrdersQuery = {}): Promise<Order[]> {
   await delay();
   let result = orders.filter((order) => matchesSearch(order, query.search ?? ''));
 
   if (query.categoryId) {
     result = result.filter((order) => order.categoryId === query.categoryId);
+  }
+  if (query.categoryIds && query.categoryIds.length > 0) {
+    const wanted = query.categoryIds;
+    result = result.filter((order) => wanted.includes(order.categoryId));
+  }
+  const { priceMin, priceMax, distanceMax, period } = query;
+  if (priceMin !== undefined) {
+    result = result.filter((order) => order.price >= priceMin);
+  }
+  if (priceMax !== undefined) {
+    result = result.filter((order) => order.price <= priceMax);
+  }
+  if (distanceMax !== undefined) {
+    result = result.filter((order) => order.distance <= distanceMax);
+  }
+  if (period) {
+    result = result.filter((order) => matchesPeriod(order, period));
   }
   if (query.status) {
     result = result.filter((order) => order.status === query.status);

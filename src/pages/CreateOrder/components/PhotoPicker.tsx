@@ -18,7 +18,7 @@ export function PhotoPicker({ photos, onAdd, onRemove }: PhotoPickerProps) {
         onClick={() => {
           inputRef.current?.click();
         }}
-        className="flex size-18 flex-col items-center justify-center gap-1 rounded-btn border border-line border-dashed bg-surface"
+        className="flex size-18 flex-col items-center justify-center gap-1 rounded-btn border border-dashed border-line bg-surface"
       >
         <Camera size={22} strokeWidth={1.7} className="text-second" aria-hidden="true" />
         <span className="text-micro font-semibold text-muted">Добавить</span>

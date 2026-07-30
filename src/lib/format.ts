@@ -61,6 +61,37 @@ export function formatTime(iso: string): string {
   return timeFormat.format(new Date(iso));
 }
 
+const fullDateFormat = new Intl.DateTimeFormat('ru-RU', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+/** «28 июля 2026» — дата отзыва. */
+export function formatDate(iso: string): string {
+  return fullDateFormat.format(new Date(iso)).replace(' г.', '');
+}
+
+const weekdayFormat = new Intl.DateTimeFormat('ru-RU', { weekday: 'short' });
+const shortDateFormat = new Intl.DateTimeFormat('ru-RU', {
+  day: '2-digit',
+  month: '2-digit',
+});
+
+/** Отметка времени в списке диалогов: «11:32», «Вчера», «Пн», «14.07». */
+export function formatListTime(iso: string): string {
+  const date = new Date(iso);
+  const dayShift = Math.round((startOfDay(new Date()) - startOfDay(date)) / 86_400_000);
+
+  if (dayShift <= 0) return timeFormat.format(date);
+  if (dayShift === 1) return 'Вчера';
+  if (dayShift < 7) {
+    const weekday = weekdayFormat.format(date).replace('.', '');
+    return weekday.charAt(0).toUpperCase() + weekday.slice(1);
+  }
+  return shortDateFormat.format(date);
+}
+
 const orderStatusLabel: Record<OrderStatus, string> = {
   searching: 'В поиске',
   assigned: 'Исполнитель найден',

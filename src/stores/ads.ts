@@ -4,8 +4,11 @@ import { api } from '@/api/client';
 import type { ServiceAd } from '@/api/types';
 import { toMessage } from '@/lib/errors';
 
+export type AdsTab = 'active' | 'hidden';
+
 export class AdsStore {
   items: ServiceAd[] = [];
+  tab: AdsTab = 'active';
   search = '';
   isLoading = false;
   error: string | null = null;
@@ -14,19 +17,33 @@ export class AdsStore {
     makeAutoObservable(this);
   }
 
+  get visible(): ServiceAd[] {
+    const wantHidden = this.tab === 'hidden';
+    return this.items.filter((ad) => ad.isHidden === wantHidden);
+  }
+
   get isEmpty(): boolean {
-    return !this.isLoading && this.error === null && this.items.length === 0;
+    return !this.isLoading && this.error === null && this.visible.length === 0;
+  }
+
+  setTab(tab: AdsTab): void {
+    this.tab = tab;
   }
 
   setSearch(search: string): void {
     this.search = search;
   }
 
-  async load(): Promise<void> {
+  /** Свои объявления: экран 11. Без seekerId — общая витрина. */
+  async load(seekerId?: string): Promise<void> {
     this.isLoading = true;
     this.error = null;
     try {
-      const items = await api.getAds({ search: this.search });
+      const items = await api.getAds(
+        seekerId === undefined
+          ? { search: this.search }
+          : { search: this.search, seekerId },
+      );
       runInAction(() => {
         this.items = items;
       });

@@ -9,7 +9,7 @@ interface CategorySheetProps {
   onClose: () => void;
 }
 
-/** Нижний лист выбора категории. Экрана в макете нет — вид собран по теме. */
+/** Нижний лист выбора категории: экраны 06 и 12b. */
 export function CategorySheet({
   categories,
   selectedId,
@@ -24,7 +24,7 @@ export function CategorySheet({
         onClick={onClose}
         className="absolute inset-0 bg-canvas/70"
       />
-      <div className="relative flex max-h-[85dvh] w-full flex-col gap-1 overflow-y-auto rounded-t-card border-t border-line bg-bg px-gutter pt-card pb-action-safe sm:max-w-phone">
+      <div className="relative flex max-h-sheet w-full flex-col gap-1 overflow-y-auto rounded-t-card border-t border-line bg-bg px-gutter pt-card pb-action-safe sm:max-w-phone">
         <span className="mx-auto mb-2 h-1.5 w-16 rounded-pill bg-line" />
         <p className="pb-1 text-meta font-bold tracking-wide text-second uppercase">
           Категория

@@ -10,10 +10,7 @@ export function MyOrderRow({ order }: { order: Order }) {
   return (
     <article className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-card">
       <div className="flex items-start justify-between gap-2.5">
-        <Link
-          to={`/orders/${order.id}`}
-          className="text-body font-semibold text-text"
-        >
+        <Link to={`/orders/${order.id}`} className="text-body font-semibold text-text">
           {order.title}
         </Link>
         {/* Меню действий над заказом в макете не раскрыто — кнопка пока неактивна. */}

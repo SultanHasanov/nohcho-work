@@ -19,13 +19,7 @@ const icons: Record<string, LucideIcon> = {
 };
 
 /** Иконка категории — ей подменяем фотографию, которой в моках нет. */
-export function CategoryIcon({
-  categoryId,
-  size,
-}: {
-  categoryId: string;
-  size: number;
-}) {
+export function CategoryIcon({ categoryId, size }: { categoryId: string; size: number }) {
   const Icon = icons[categoryId] ?? Other;
   return (
     <Icon size={size} strokeWidth={1.7} className="text-icon-off" aria-hidden="true" />

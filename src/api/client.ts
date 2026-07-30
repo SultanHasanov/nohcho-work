@@ -1,14 +1,20 @@
 import * as mock from '@/api/mock';
 import type {
   AdsQuery,
+  AppNotification,
   Category,
   Chat,
+  FavoriteSeeker,
   Message,
   Order,
   OrderDraft,
+  OrderResponse,
   OrdersQuery,
+  RatingSummary,
+  Review,
   Role,
   ServiceAd,
+  ServiceAdDraft,
   Session,
   User,
 } from '@/api/types';
@@ -32,8 +38,19 @@ export interface ApiClient {
   createOrder(draft: OrderDraft): Promise<Order>;
   takeOrder(id: string): Promise<Order>;
   getCategories(): Promise<Category[]>;
+  getUser(id: string): Promise<User>;
 
   getAds(query?: AdsQuery): Promise<ServiceAd[]>;
+  createAd(draft: ServiceAdDraft): Promise<ServiceAd>;
+
+  getFavoriteOrders(): Promise<Order[]>;
+  getFavoriteSeekers(): Promise<FavoriteSeeker[]>;
+  getMyResponses(): Promise<OrderResponse[]>;
+
+  getNotifications(): Promise<AppNotification[]>;
+  markNotificationsRead(): Promise<AppNotification[]>;
+  getReviews(): Promise<Review[]>;
+  getRatingSummary(): Promise<RatingSummary>;
 
   getChats(): Promise<Chat[]>;
   getMessages(chatId: string): Promise<Message[]>;

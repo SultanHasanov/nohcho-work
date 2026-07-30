@@ -34,11 +34,16 @@ export class OrdersStore {
     this.search = search;
   }
 
-  async load(): Promise<void> {
+  /** Фильтры экрана 08 приходят из FiltersStore и подмешиваются в запрос. */
+  async load(filters: OrdersQuery = {}): Promise<void> {
     this.isLoading = true;
     this.error = null;
     try {
-      const items = await api.getOrders({ segment: this.segment, search: this.search });
+      const items = await api.getOrders({
+        ...filters,
+        segment: this.segment,
+        search: this.search,
+      });
       runInAction(() => {
         this.items = items;
       });

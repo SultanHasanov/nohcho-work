@@ -20,10 +20,10 @@ interface MenuItem {
 const items: MenuItem[] = [
   { label: 'Мои заказы', icon: ClipboardList, to: '/my-orders' },
   { label: 'Мои объявления', icon: Volume2, to: '/ads' },
-  { label: 'Мои отклики', icon: MessageSquare },
-  { label: 'Избранное', icon: Heart },
-  { label: 'Рейтинг и отзывы', icon: Star },
-  { label: 'Настройки', icon: Settings },
+  { label: 'Мои отклики', icon: MessageSquare, to: '/responses' },
+  { label: 'Избранное', icon: Heart, to: '/favorites' },
+  { label: 'Рейтинг и отзывы', icon: Star, to: '/reviews' },
+  { label: 'Настройки', icon: Settings, to: '/settings' },
 ];
 
 /** Список разделов профиля: строки 48px с разделителями — фрейм 13. */
@@ -43,12 +43,7 @@ function MenuRow({ item }: { item: MenuItem }) {
     <>
       <Icon size={20} strokeWidth={1.7} className="text-second" aria-hidden="true" />
       <span className="flex-1 text-lead font-semibold text-text">{item.label}</span>
-      <ChevronRight
-        size={18}
-        strokeWidth={2}
-        className="text-muted"
-        aria-hidden="true"
-      />
+      <ChevronRight size={18} strokeWidth={2} className="text-muted" aria-hidden="true" />
     </>
   );
 

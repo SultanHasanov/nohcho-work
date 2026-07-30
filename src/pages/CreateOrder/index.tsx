@@ -11,7 +11,7 @@ import { ErrorNote } from '@/components/ui/ErrorNote';
 import { Field } from '@/components/ui/Field';
 import { FieldRow, InputRow } from '@/components/ui/FieldRow';
 import { TextArea } from '@/components/ui/TextArea';
-import { CategorySheet } from '@/pages/CreateOrder/components/CategorySheet';
+import { CategorySheet } from '@/components/ui/CategorySheet';
 import { DateTimeRow } from '@/pages/CreateOrder/components/DateTimeRow';
 import { GeoIcon } from '@/pages/CreateOrder/components/GeoIcon';
 import { PhotoPicker } from '@/pages/CreateOrder/components/PhotoPicker';
@@ -30,7 +30,7 @@ const CreateOrderPage = observer(function CreateOrderPage() {
     const order = await orderDraft.submit();
     if (order) {
       void orders.load();
-      void navigate('/my-orders', { replace: true });
+      void navigate(`/orders/${order.id}/published`, { replace: true });
     }
   }
 
@@ -96,9 +96,7 @@ const CreateOrderPage = observer(function CreateOrderPage() {
             onChange={(value) => {
               orderDraft.setPrice(value);
             }}
-            trailing={
-              <span className="text-card-title font-bold text-accent">₽</span>
-            }
+            trailing={<span className="text-card-title font-bold text-accent">₽</span>}
           />
         </Field>
 

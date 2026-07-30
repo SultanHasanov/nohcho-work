@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SearchField } from '@/components/ui/SearchField';
 import { Segmented } from '@/components/ui/Segmented';
@@ -7,6 +7,7 @@ import { plural } from '@/lib/format';
 import { useDebouncedValue } from '@/lib/hooks/useDebouncedValue';
 import { CityPicker } from '@/pages/Home/components/CityPicker';
 import { FilterButton } from '@/pages/Home/components/FilterButton';
+import { FiltersSheet } from '@/pages/Home/components/FiltersSheet';
 import { HomeHeader } from '@/pages/Home/components/HomeHeader';
 import { OrderList } from '@/pages/Home/components/OrderList';
 import { useStores } from '@/stores/context';
@@ -24,19 +25,21 @@ const titles = {
 } as const;
 
 const HomePage = observer(function HomePage() {
-  const { orders, session, chat } = useStores();
+  const { orders, session, chat, filters } = useStores();
   const { segment, search } = orders;
   const debouncedSearch = useDebouncedValue(search);
+  const [isFiltersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
-    void orders.load();
-  }, [orders, segment, debouncedSearch]);
+    void orders.load(filters.query);
+  }, [orders, filters, segment, debouncedSearch]);
 
   useEffect(() => {
+    void orders.loadCategories();
     void chat.loadChats();
-  }, [chat]);
+  }, [orders, chat]);
 
-  const hasUnread = chat.chats.some((item) => item.unreadCount > 0);
+  const hasUnread = chat.unreadTotal > 0;
 
   return (
     <>
@@ -52,7 +55,13 @@ const HomePage = observer(function HomePage() {
               orders.setSearch(value);
             }}
           />
-          <FilterButton />
+          <FilterButton
+            activeCount={filters.activeCount}
+            onClick={() => {
+              filters.startEditing();
+              setFiltersOpen(true);
+            }}
+          />
         </div>
 
         <Segmented
@@ -76,6 +85,14 @@ const HomePage = observer(function HomePage() {
       <div className="flex flex-1 flex-col px-gutter pt-card pb-4">
         <OrderList />
       </div>
+
+      {isFiltersOpen ? (
+        <FiltersSheet
+          onClose={() => {
+            setFiltersOpen(false);
+          }}
+        />
+      ) : null}
     </>
   );
 });

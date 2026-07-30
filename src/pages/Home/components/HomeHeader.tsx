@@ -1,4 +1,5 @@
 import { Bell } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import { Logo, LogoWordmark } from '@/components/ui/Logo';
 
@@ -7,14 +8,12 @@ export function HomeHeader({ hasUnread }: { hasUnread: boolean }) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2.25">
-        <Logo size={24} strokeWidth={1.8} />
+        <Logo size={24} />
         <LogoWordmark className="text-logo-header font-extrabold text-text" />
       </div>
 
-      {/* Экрана уведомлений в макете нет — кнопка нарисована, но пока неактивна. */}
-      <button
-        type="button"
-        disabled
+      <Link
+        to="/notifications"
         aria-label="Уведомления"
         className="relative flex size-11 items-center justify-center"
       >
@@ -22,7 +21,7 @@ export function HomeHeader({ hasUnread }: { hasUnread: boolean }) {
         {hasUnread ? (
           <span className="absolute top-2.25 right-2.25 size-2.25 rounded-pill border-2 border-bg bg-accent" />
         ) : null}
-      </button>
+      </Link>
     </div>
   );
 }

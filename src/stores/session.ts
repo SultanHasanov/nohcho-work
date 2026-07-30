@@ -69,6 +69,12 @@ export class SessionStore {
     }
   }
 
+  /** Сессия, полученная другим способом входа: экран 15. */
+  setUser(user: User): void {
+    this.user = user;
+    this.error = null;
+  }
+
   chooseRole(role: Role): void {
     this.pendingRole = role;
     this.error = null;

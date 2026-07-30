@@ -10,6 +10,7 @@ export class ChatStore {
   activeChatId: string | null = null;
   /** Заказ, к которому привязан открытый диалог: полоса над перепиской. */
   activeOrder: Order | null = null;
+  search = '';
   isLoading = false;
   isSending = false;
   error: string | null = null;
@@ -22,8 +23,28 @@ export class ChatStore {
     return this.chats.find((chat) => chat.id === this.activeChatId) ?? null;
   }
 
+  /** Список с учётом поиска: экран 09. */
+  get visibleChats(): Chat[] {
+    const needle = this.search.trim().toLowerCase();
+    if (!needle) return this.chats;
+    return this.chats.filter(
+      (chat) =>
+        chat.peerName.toLowerCase().includes(needle) ||
+        chat.orderTitle.toLowerCase().includes(needle) ||
+        chat.lastMessage.toLowerCase().includes(needle),
+    );
+  }
+
+  get unreadTotal(): number {
+    return this.chats.reduce((sum, chat) => sum + chat.unreadCount, 0);
+  }
+
   get isEmpty(): boolean {
-    return !this.isLoading && this.error === null && this.chats.length === 0;
+    return !this.isLoading && this.error === null && this.visibleChats.length === 0;
+  }
+
+  setSearch(search: string): void {
+    this.search = search;
   }
 
   async loadChats(): Promise<void> {

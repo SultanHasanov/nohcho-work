@@ -128,6 +128,10 @@
   width: var(--size-thumb);
   height: var(--size-thumb);
 }
+/* Предельная высота нижнего листа: категории, фильтры. */
+@utility max-h-sheet {
+  max-height: 85dvh;
+}
 @utility min-h-textarea {
   min-height: var(--size-textarea);
 }

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#050605; font-family:'Montserrat',Helvetica,sans-serif; }
+  a { color:#4CAF50; text-decoration:underline; }
+  a:hover { color:#79C97C; }
+  @keyframes nw-pulse { 0%{transform:scale(1);opacity:.55} 70%{transform:scale(2.6);opacity:0} 100%{transform:scale(2.6);opacity:0} }
+  @keyframes nw-shimmer { 0%{background-position:-220px 0} 100%{background-position:320px 0} }
+</style>
+</helmet>
+
+<section style="padding:56px 48px 96px; display:flex; flex-direction:column; gap:44px; background:#050605; min-height:100vh; box-sizing:border-box">
+
+  <div style="display:flex; flex-direction:column; gap:18px">
+    <div style="display:flex; align-items:center; gap:14px">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M3 19 L12 5 L21 19 Z" stroke="#4CAF50" stroke-width="2" stroke-linejoin="round"></path><path d="M9 19 L12 12 L15 19 Z" fill="#FFFFFF"></path></svg>
+      <div style="font-size:26px; font-weight:800; color:#FFFFFF; letter-spacing:-0.2px">Нохчо <span style="color:#4CAF50">Work</span></div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6B716B; margin-left:8px">партия 1 · дизайн-система + экраны 1–3</div>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:10px">
+      <div style="display:flex; align-items:center; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:7px 14px 7px 8px"><span style="width:16px; height:16px; border-radius:50%; background:#0A0B0A; border:1px solid #2A2E2A"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9BA29B">bg #0A0B0A</span></div>
+      <div style="display:flex; align-items:center; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:7px 14px 7px 8px"><span style="width:16px; height:16px; border-radius:50%; background:#151815; border:1px solid #2A2E2A"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9BA29B">surface #151815</span></div>
+      <div style="display:flex; align-items:center; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:7px 14px 7px 8px"><span style="width:16px; height:16px; border-radius:50%; background:#1E221E; border:1px solid #2A2E2A"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9BA29B">surface-2 #1E221E</span></div>
+      <div style="display:flex; align-items:center; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:7px 14px 7px 8px"><span style="width:16px; height:16px; border-radius:50%; background:#4CAF50"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9BA29B">accent #4CAF50</span></div>
+      <div style="display:flex; align-items:center; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:7px 14px 7px 8px"><span style="width:16px; height:16px; border-radius:50%; background:#FFC02D"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9BA29B">amber #FFC02D</span></div>
+      <div style="display:flex; align-items:center; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:7px 14px 7px 8px"><span style="width:16px; height:16px; border-radius:50%; background:#E8A33D"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9BA29B">warning #E8A33D</span></div>
+      <div style="display:flex; align-items:center; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:7px 14px 7px 8px"><span style="width:16px; height:16px; border-radius:50%; background:#E5484D"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9BA29B">danger #E5484D</span></div>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:56px; align-items:flex-start">
+
+    <!-- ========== 1. ВХОД ЧЕРЕЗ TELEGRAM ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">01 · вход</div>
+      <div data-screen-label="01 Вход" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="position:absolute; inset:0; background:repeating-linear-gradient(115deg,#101410 0 12px,#0C0F0C 12px 24px); opacity:0.5"></div>
+        <div style="position:absolute; inset:0; background:radial-gradient(120% 60% at 50% 0%, rgba(76,175,80,0.10), rgba(10,11,10,0) 70%)"></div>
+        <div style="position:absolute; left:0; right:0; top:0; height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box; z-index:3">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M1 4.2C4.8 1 11.2 1 15 4.2" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"></path><path d="M4 7.2c2.4-2 5.6-2 8 0" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"></path><circle cx="8" cy="10" r="1.2" fill="#FFFFFF"></circle></svg>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+        <div style="position:relative; z-index:2; flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:18px; padding:0 16px">
+          <svg width="76" height="76" viewBox="0 0 24 24" fill="none"><path d="M3 19 L12 5 L21 19 Z" stroke="#4CAF50" stroke-width="1.6" stroke-linejoin="round"></path><path d="M9 19 L12 12 L15 19 Z" fill="#FFFFFF"></path></svg>
+          <div style="font-size:34px; font-weight:800; color:#FFFFFF; letter-spacing:-0.4px">Нохчо <span style="color:#4CAF50">Work</span></div>
+          <div style="font-size:15px; font-weight:500; color:#9BA29B; text-align:center; max-width:280px; line-height:1.45">Работа рядом.<br>Возможности для каждого.</div>
+        </div>
+        <div style="position:relative; z-index:2; padding:0 16px 34px; display:flex; flex-direction:column; gap:12px">
+          <button style="height:56px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:16px; font-weight:600; display:flex; align-items:center; justify-content:center; gap:10px; cursor:pointer" style-active="background:#3D8B40">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 4 L3 11 L9.5 13.5 L12 20.5 L21 4 Z" fill="#FFFFFF"></path><path d="M9.5 13.5 L21 4" stroke="#4CAF50" stroke-width="1.2"></path></svg>
+            Войти через Telegram
+          </button>
+          <button style="height:52px; border:1px solid #2A2E2A; border-radius:12px; background:transparent; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:16px; font-weight:600; cursor:pointer" style-active="background:#151815">Войти по номеру телефона</button>
+          <div style="font-size:11px; font-weight:500; line-height:1.6; color:#6B716B; text-align:center; padding:8px 12px 0">Продолжая, вы принимаете <a href="#1a" style="color:#9BA29B">условия использования</a> и <a href="#1a" style="color:#9BA29B">политику конфиденциальности</a></div>
+          <div style="width:134px; height:5px; border-radius:999px; background:#2A2E2A; margin:10px auto 0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 2. ВЫБОР РОЛИ ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">02 · выбор роли</div>
+      <div data-screen-label="02 Роль" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M1 4.2C4.8 1 11.2 1 15 4.2" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"></path><path d="M4 7.2c2.4-2 5.6-2 8 0" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"></path><circle cx="8" cy="10" r="1.2" fill="#FFFFFF"></circle></svg>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+        <div style="padding:20px 16px 0; display:flex; flex-direction:column; gap:8px">
+          <div style="font-size:20px; font-weight:700; color:#FFFFFF">Кто вы?</div>
+          <div style="font-size:13px; font-weight:500; color:#9BA29B">Выберите, как вы будете пользоваться приложением</div>
+        </div>
+        <div style="padding:24px 16px 0; display:flex; flex-direction:column; gap:14px">
+          <div onClick="{{ pickSeeker }}" style="position:relative; height:140px; border-radius:14px; background:#151815; border:2px solid {{ seekerBorder }}; box-sizing:border-box; padding:20px; display:flex; flex-direction:column; justify-content:center; gap:10px; cursor:pointer">
+            <div style="width:44px; height:44px; border-radius:12px; background:rgba(76,175,80,0.14); display:flex; align-items:center; justify-content:center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 15a8 8 0 0 1 16 0" stroke="#4CAF50" stroke-width="1.8" stroke-linecap="round"></path><path d="M2.5 15h19" stroke="#4CAF50" stroke-width="1.8" stroke-linecap="round"></path><path d="M12 7v8" stroke="#4CAF50" stroke-width="1.8"></path></svg>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:#FFFFFF">Я ищу работу</div>
+            <div style="font-size:13px; font-weight:500; color:#9BA29B">Беру заказы и получаю доход</div>
+            <div style="position:absolute; top:16px; right:16px; width:26px; height:26px; border-radius:50%; background:#4CAF50; display:{{ seekerCheck }}; align-items:center; justify-content:center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 7" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+          <div onClick="{{ pickClient }}" style="position:relative; height:140px; border-radius:14px; background:#151815; border:2px solid {{ clientBorder }}; box-sizing:border-box; padding:20px; display:flex; flex-direction:column; justify-content:center; gap:10px; cursor:pointer">
+            <div style="width:44px; height:44px; border-radius:12px; background:#1E221E; display:flex; align-items:center; justify-content:center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="7.5" width="18" height="12" rx="2.5" stroke="#9BA29B" stroke-width="1.8"></rect><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" stroke="#9BA29B" stroke-width="1.8" stroke-linecap="round"></path><path d="M3 12.5h18" stroke="#9BA29B" stroke-width="1.8"></path></svg>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:#FFFFFF">Мне нужен работник</div>
+            <div style="font-size:13px; font-weight:500; color:#9BA29B">Размещаю заказы и нахожу исполнителей</div>
+            <div style="position:absolute; top:16px; right:16px; width:26px; height:26px; border-radius:50%; background:#4CAF50; display:{{ clientCheck }}; align-items:center; justify-content:center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 7" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:auto; padding:0 16px 34px; display:flex; flex-direction:column; gap:14px">
+          <div style="font-size:12px; font-weight:500; color:#6B716B; text-align:center">Роль можно поменять в профиле</div>
+          <button style="height:52px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:16px; font-weight:600; cursor:pointer" style-active="background:#3D8B40">Продолжить</button>
+          <div style="width:134px; height:5px; border-radius:999px; background:#2A2E2A; margin:4px auto 0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 3. ГЛАВНАЯ ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">03 · главная — заказы рядом</div>
+      <div data-screen-label="03 Главная" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box; flex:none">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M1 4.2C4.8 1 11.2 1 15 4.2" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"></path><path d="M4 7.2c2.4-2 5.6-2 8 0" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"></path><circle cx="8" cy="10" r="1.2" fill="#FFFFFF"></circle></svg>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+
+        <div style="flex:none; padding:8px 16px 0; display:flex; flex-direction:column; gap:14px">
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div style="display:flex; align-items:center; gap:9px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 19 L12 5 L21 19 Z" stroke="#4CAF50" stroke-width="1.8" stroke-linejoin="round"></path><path d="M9 19 L12 12 L15 19 Z" fill="#FFFFFF"></path></svg>
+              <div style="font-size:19px; font-weight:800; color:#FFFFFF">Нохчо <span style="color:#4CAF50">Work</span></div>
+            </div>
+            <div style="position:relative; width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.4 5.5 1.4 5.5H4.6S6 14 6 10Z" stroke="#FFFFFF" stroke-width="1.7" stroke-linejoin="round"></path><path d="M10 18.5a2.2 2.2 0 0 0 4 0" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round"></path></svg>
+              <span style="position:absolute; top:9px; right:9px; width:9px; height:9px; border-radius:50%; background:#4CAF50; border:2px solid #0A0B0A"></span>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:6px; cursor:pointer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z" stroke="#4CAF50" stroke-width="1.7"></path><circle cx="12" cy="10" r="2.4" stroke="#4CAF50" stroke-width="1.7"></circle></svg>
+            <span style="font-size:15px; font-weight:600; color:#FFFFFF">Грозный</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9.5l6 6 6-6" stroke="#9BA29B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+
+          <div style="display:flex; gap:10px; align-items:center">
+            <div style="flex:1; height:48px; border-radius:12px; background:#151815; border:1px solid #2A2E2A; display:flex; align-items:center; gap:10px; padding:0 14px; box-sizing:border-box">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="#6B716B" stroke-width="1.8"></circle><path d="M16 16l4 4" stroke="#6B716B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:15px; font-weight:500; color:#6B716B">Поиск заказов</span>
+            </div>
+            <div style="height:48px; padding:0 16px; border-radius:999px; background:#4CAF50; display:flex; align-items:center; gap:8px; cursor:pointer" style-active="background:#3D8B40">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M7 12h10M10 17h4" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path></svg>
+              <span style="font-size:14px; font-weight:600; color:#FFFFFF">Фильтр</span>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:8px; background:#151815; border:1px solid #2A2E2A; border-radius:999px; padding:4px">
+            <div onClick="{{ seg0 }}" style="flex:1; height:38px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:{{ seg0Bg }}; color:{{ seg0Color }}; font-size:14px; font-weight:600; cursor:pointer">Все</div>
+            <div onClick="{{ seg1 }}" style="flex:1; height:38px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:{{ seg1Bg }}; color:{{ seg1Color }}; font-size:14px; font-weight:600; cursor:pointer">Рядом</div>
+            <div onClick="{{ seg2 }}" style="flex:1; height:38px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:{{ seg2Bg }}; color:{{ seg2Color }}; font-size:14px; font-weight:600; cursor:pointer">Популярные</div>
+          </div>
+
+          <div style="display:flex; align-items:baseline; justify-content:space-between">
+            <div style="font-size:20px; font-weight:700; color:#FFFFFF">Заказы рядом</div>
+            <div style="font-size:12px; font-weight:600; color:#6B716B">24 заказа</div>
+          </div>
+        </div>
+
+        <div style="flex:1; overflow:hidden; padding:14px 16px 0; display:flex; flex-direction:column; gap:12px">
+
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:12px">
+            <div style="display:flex; gap:12px">
+              <div style="flex:1; display:flex; flex-direction:column; gap:6px">
+                <div style="font-size:16px; font-weight:600; color:#FFFFFF; line-height:1.3">Нужно вынести строительный мусор</div>
+                <div style="font-size:22px; font-weight:800; color:#4CAF50; letter-spacing:-0.2px">8 000 ₽</div>
+                <div style="display:flex; align-items:center; gap:6px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z" stroke="#9BA29B" stroke-width="1.9"></path></svg>
+                  <span style="font-size:13px; font-weight:500; color:#9BA29B">ул. А. Кадырова, 128</span>
+                </div>
+                <div style="font-size:11px; font-weight:500; color:#6B716B">600 м от вас · Сегодня, 12:00</div>
+              </div>
+              <div style="width:84px; height:84px; border-radius:12px; background:repeating-linear-gradient(135deg,#1E221E 0 6px,#191D19 6px 12px); border:1px solid #2A2E2A; display:flex; align-items:center; justify-content:center; flex:none">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 18h16l-2-7H6l-2 7Z" stroke="#4B524B" stroke-width="1.7" stroke-linejoin="round"></path><path d="M9 11V7l3-3 3 3v4" stroke="#4B524B" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+              </div>
+            </div>
+            <button style="height:44px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600; cursor:pointer" style-active="background:#3D8B40">Взять заказ</button>
+          </div>
+
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:12px">
+            <div style="display:flex; gap:12px">
+              <div style="flex:1; display:flex; flex-direction:column; gap:6px">
+                <div style="font-size:16px; font-weight:600; color:#FFFFFF; line-height:1.3">Помочь с переездом</div>
+                <div style="font-size:22px; font-weight:800; color:#4CAF50; letter-spacing:-0.2px">5 500 ₽</div>
+                <div style="display:flex; align-items:center; gap:6px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z" stroke="#9BA29B" stroke-width="1.9"></path></svg>
+                  <span style="font-size:13px; font-weight:500; color:#9BA29B">ул. Лорсанова, 15</span>
+                </div>
+                <div style="font-size:11px; font-weight:500; color:#6B716B">1,2 км от вас · Сегодня, 14:30</div>
+              </div>
+              <div style="width:84px; height:84px; border-radius:12px; background:repeating-linear-gradient(135deg,#1E221E 0 6px,#191D19 6px 12px); border:1px solid #2A2E2A; display:flex; align-items:center; justify-content:center; flex:none">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="11" rx="1.5" stroke="#4B524B" stroke-width="1.7"></rect><path d="M4 11h16M12 7v11" stroke="#4B524B" stroke-width="1.7"></path></svg>
+              </div>
+            </div>
+            <button style="height:44px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600; cursor:pointer" style-active="background:#3D8B40">Взять заказ</button>
+          </div>
+
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:12px">
+            <div style="display:flex; gap:12px">
+              <div style="flex:1; display:flex; flex-direction:column; gap:6px">
+                <div style="font-size:16px; font-weight:600; color:#FFFFFF; line-height:1.3">Покосить траву на участке</div>
+                <div style="font-size:22px; font-weight:800; color:#4CAF50; letter-spacing:-0.2px">3 000 ₽</div>
+                <div style="display:flex; align-items:center; gap:6px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z" stroke="#9BA29B" stroke-width="1.9"></path></svg>
+                  <span style="font-size:13px; font-weight:500; color:#9BA29B">ул. Назарбаева, 42</span>
+                </div>
+                <div style="font-size:11px; font-weight:500; color:#6B716B">1,5 км от вас · Сегодня, 16:00</div>
+              </div>
+              <div style="width:84px; height:84px; border-radius:12px; background:repeating-linear-gradient(135deg,#1E221E 0 6px,#191D19 6px 12px); border:1px solid #2A2E2A; display:flex; align-items:center; justify-content:center; flex:none">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 18h16" stroke="#4B524B" stroke-width="1.7" stroke-linecap="round"></path><path d="M7 18V9M12 18V6M17 18v-7" stroke="#4B524B" stroke-width="1.7" stroke-linecap="round"></path></svg>
+              </div>
+            </div>
+            <button style="height:44px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600; cursor:pointer" style-active="background:#3D8B40">Взять заказ</button>
+          </div>
+
+        </div>
+
+        <div style="flex:none; position:relative; height:86px; background:#101210; border-top:1px solid #2A2E2A">
+          <div style="position:absolute; left:0; right:0; top:0; height:64px; display:flex; align-items:center; padding:0 6px; box-sizing:border-box">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6.5 8 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8Z" stroke="#4CAF50" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#4CAF50">Главная</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2.5" stroke="#6B716B" stroke-width="1.8"></rect><path d="M9 9h6M9 13h6M9 17h3" stroke="#6B716B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Заказы</span>
+            </div>
+            <div style="flex:1"></div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4V6.5Z" stroke="#6B716B" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Чат</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.5" r="3.7" stroke="#6B716B" stroke-width="1.8"></circle><path d="M5 20a7 7 0 0 1 14 0" stroke="#6B716B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Профиль</span>
+            </div>
+          </div>
+          <div style="position:absolute; left:50%; top:-18px; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:4px">
+            <div style="width:56px; height:56px; border-radius:50%; background:#4CAF50; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(76,175,80,0.32); cursor:pointer" style-active="background:#3D8B40">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:#6B716B">Создать</span>
+          </div>
+          <div style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:134px; height:5px; border-radius:999px; background:#2A2E2A"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== СОСТОЯНИЯ ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">03b · состояния: загрузка · пусто · нажатие</div>
+      <div data-screen-label="03b Состояния" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box; flex:none">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+
+        <div style="padding:8px 16px 0; display:flex; flex-direction:column; gap:12px; flex:1; overflow:hidden">
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">Загрузка</div>
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:12px">
+            <div style="display:flex; gap:12px">
+              <div style="flex:1; display:flex; flex-direction:column; gap:9px">
+                <div style="height:14px; width:88%; border-radius:7px; background:linear-gradient(90deg,#1E221E 0%,#262B26 50%,#1E221E 100%); background-size:400px 100%; animation:nw-shimmer 1.4s linear infinite"></div>
+                <div style="height:20px; width:44%; border-radius:8px; background:linear-gradient(90deg,#1E221E 0%,#262B26 50%,#1E221E 100%); background-size:400px 100%; animation:nw-shimmer 1.4s linear infinite"></div>
+                <div style="height:11px; width:66%; border-radius:6px; background:#1E221E"></div>
+                <div style="height:9px; width:52%; border-radius:5px; background:#1E221E"></div>
+              </div>
+              <div style="width:84px; height:84px; border-radius:12px; background:linear-gradient(90deg,#1E221E 0%,#262B26 50%,#1E221E 100%); background-size:400px 100%; animation:nw-shimmer 1.4s linear infinite; flex:none"></div>
+            </div>
+            <div style="height:44px; border-radius:12px; background:#1E221E"></div>
+          </div>
+
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B; margin-top:4px">Нажатое состояние</div>
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; gap:12px; align-items:center">
+            <button style="flex:1; height:44px; border:none; border-radius:12px; background:#3D8B40; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600">Взять заказ</button>
+            <button style="flex:1; height:44px; border:1px solid #2A2E2A; border-radius:12px; background:#1E221E; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600">Отменить</button>
+          </div>
+
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B; margin-top:4px">Пустой список</div>
+          <div style="flex:1; background:#151815; border:1px solid #2A2E2A; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:24px; text-align:center">
+            <div style="width:72px; height:72px; border-radius:50%; background:#1E221E; display:flex; align-items:center; justify-content:center">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="#4B524B" stroke-width="1.8"></circle><path d="M16 16l4 4" stroke="#4B524B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+            </div>
+            <div style="font-size:16px; font-weight:700; color:#FFFFFF">Заказов рядом пока нет</div>
+            <div style="font-size:13px; font-weight:500; color:#9BA29B; max-width:240px; line-height:1.5">Расширьте радиус поиска или включите уведомления о новых заказах</div>
+            <button style="height:44px; padding:0 22px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600; cursor:pointer" style-active="background:#3D8B40">Расширить радиус</button>
+          </div>
+        </div>
+
+        <div style="flex:none; position:relative; height:86px; background:#101210; border-top:1px solid #2A2E2A">
+          <div style="position:absolute; left:0; right:0; top:0; height:64px; display:flex; align-items:center; padding:0 6px; box-sizing:border-box">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6.5 8 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8Z" stroke="#4CAF50" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#4CAF50">Главная</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2.5" stroke="#6B716B" stroke-width="1.8"></rect><path d="M9 9h6M9 13h6M9 17h3" stroke="#6B716B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Заказы</span>
+            </div>
+            <div style="flex:1"></div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4V6.5Z" stroke="#6B716B" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Чат</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.5" r="3.7" stroke="#6B716B" stroke-width="1.8"></circle><path d="M5 20a7 7 0 0 1 14 0" stroke="#6B716B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Профиль</span>
+            </div>
+          </div>
+          <div style="position:absolute; left:50%; top:-18px; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:4px">
+            <div style="width:56px; height:56px; border-radius:50%; background:#4CAF50; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(76,175,80,0.32); cursor:pointer" style-active="background:#3D8B40">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:#6B716B">Создать</span>
+          </div>
+          <div style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:134px; height:5px; border-radius:999px; background:#2A2E2A"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 6. СОЗДАТЬ ЗАКАЗ ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">06 · создать заказ</div>
+      <div data-screen-label="06 Создать заказ" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box; flex:none">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+        <div style="flex:none; height:52px; display:flex; align-items:center; padding:0 8px 0 4px">
+          <div style="width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.5 5.5L8 12l6.5 6.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div style="flex:1; text-align:center; font-size:20px; font-weight:700; color:#FFFFFF; margin-right:44px">Создать заказ</div>
+        </div>
+
+        <div style="flex:1; overflow:hidden; padding:8px 16px 0; display:flex; flex-direction:column; gap:16px">
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#9BA29B">Описание работы</div>
+            <div style="min-height:82px; border-radius:12px; background:#151815; border:1px solid #2A2E2A; padding:14px; font-size:14px; font-weight:500; color:#6B716B; line-height:1.45">Подробно опишите, что нужно сделать</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#9BA29B">Категория</div>
+            <div style="height:52px; border-radius:12px; background:#151815; border:1px solid #2A2E2A; padding:0 14px; display:flex; align-items:center; justify-content:space-between; cursor:pointer">
+              <span style="font-size:15px; font-weight:500; color:#6B716B">Выберите категорию</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.5 6l6 6-6 6" stroke="#9BA29B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#9BA29B">Адрес</div>
+            <div style="height:52px; border-radius:12px; background:#151815; border:1px solid #2A2E2A; padding:0 14px; display:flex; align-items:center; justify-content:space-between">
+              <span style="font-size:15px; font-weight:500; color:#6B716B">Укажите адрес</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7.5" stroke="#4CAF50" stroke-width="1.7"></circle><circle cx="12" cy="12" r="2.2" fill="#4CAF50"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="#4CAF50" stroke-width="1.7" stroke-linecap="round"></path></svg>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#9BA29B">Дата и время</div>
+            <div style="height:52px; border-radius:12px; background:#151815; border:1px solid #2A2E2A; padding:0 14px; display:flex; align-items:center; justify-content:space-between">
+              <span style="font-size:15px; font-weight:500; color:#6B716B">Выберите дату и время</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="14" rx="2.5" stroke="#9BA29B" stroke-width="1.7"></rect><path d="M4 10.5h16M9 4v3M15 4v3" stroke="#9BA29B" stroke-width="1.7" stroke-linecap="round"></path></svg>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#9BA29B">Бюджет</div>
+            <div style="height:52px; border-radius:12px; background:#151815; border:1px solid #2A2E2A; padding:0 14px; display:flex; align-items:center; justify-content:space-between">
+              <span style="font-size:15px; font-weight:500; color:#6B716B">Укажите сумму</span>
+              <span style="font-size:18px; font-weight:700; color:#4CAF50">₽</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#9BA29B">Фото <span style="color:#6B716B">(необязательно)</span></div>
+            <div style="display:flex; gap:10px">
+              <div style="width:72px; height:72px; border-radius:12px; background:#151815; border:1px dashed #2A2E2A; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; cursor:pointer">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2.5" stroke="#9BA29B" stroke-width="1.7"></rect><circle cx="12" cy="13.5" r="3.4" stroke="#9BA29B" stroke-width="1.7"></circle><path d="M9 7l1.2-2.2h3.6L15 7" stroke="#9BA29B" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+                <span style="font-size:9px; font-weight:600; color:#6B716B">Добавить</span>
+              </div>
+              <div style="position:relative; width:72px; height:72px; border-radius:12px; background:repeating-linear-gradient(135deg,#1E221E 0 6px,#191D19 6px 12px); border:1px solid #2A2E2A; display:flex; align-items:center; justify-content:center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 18h16l-2-7H6l-2 7Z" stroke="#4B524B" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+                <span style="position:absolute; top:-6px; right:-6px; width:20px; height:20px; border-radius:50%; background:#1E221E; border:1px solid #2A2E2A; display:flex; align-items:center; justify-content:center; cursor:pointer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#E5484D" stroke-width="3" stroke-linecap="round"></path></svg></span>
+              </div>
+              <div style="position:relative; width:72px; height:72px; border-radius:12px; background:repeating-linear-gradient(135deg,#1E221E 0 6px,#191D19 6px 12px); border:1px solid #2A2E2A; display:flex; align-items:center; justify-content:center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="11" rx="1.5" stroke="#4B524B" stroke-width="1.7"></rect><path d="M4 11h16M12 7v11" stroke="#4B524B" stroke-width="1.7"></path></svg>
+                <span style="position:absolute; top:-6px; right:-6px; width:20px; height:20px; border-radius:50%; background:#1E221E; border:1px solid #2A2E2A; display:flex; align-items:center; justify-content:center; cursor:pointer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#E5484D" stroke-width="3" stroke-linecap="round"></path></svg></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:none; padding:14px 16px 30px; background:#0A0B0A; border-top:1px solid #2A2E2A; display:flex; flex-direction:column; gap:10px">
+          <button style="height:52px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:16px; font-weight:600; cursor:pointer" style-active="background:#3D8B40">Опубликовать заказ</button>
+          <div style="width:134px; height:5px; border-radius:999px; background:#2A2E2A; margin:0 auto"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 10. МОИ ЗАКАЗЫ ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">10 · мои заказы</div>
+      <div data-screen-label="10 Мои заказы" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box; flex:none">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+        <div style="flex:none; height:52px; display:flex; align-items:center; padding:0 8px 0 4px">
+          <div style="width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.5 5.5L8 12l6.5 6.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div style="flex:1; text-align:center; font-size:20px; font-weight:700; color:#FFFFFF; margin-right:44px">Мои заказы</div>
+        </div>
+
+        <div style="flex:none; padding:4px 16px 0">
+          <div style="display:flex; border-bottom:1px solid #2A2E2A">
+            <div style="flex:1; height:44px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600; color:#4CAF50; border-bottom:2px solid #4CAF50; cursor:pointer">Активные</div>
+            <div style="flex:1; height:44px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600; color:#9BA29B; cursor:pointer">Выполненные</div>
+          </div>
+        </div>
+
+        <div style="flex:1; overflow:hidden; padding:14px 16px 0; display:flex; flex-direction:column; gap:10px">
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:6px">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px">
+              <div style="font-size:16px; font-weight:600; color:#FFFFFF">Нужно вынести мусор</div>
+              <div style="width:28px; height:28px; margin:-6px -6px 0 0; display:flex; align-items:center; justify-content:center; cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="12" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="19" cy="12" r="1.6" fill="#9BA29B"></circle></svg></div>
+            </div>
+            <div style="font-size:20px; font-weight:800; color:#4CAF50">8 000 ₽</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <span style="font-size:12px; font-weight:500; color:#6B716B">Сегодня, 12:00</span>
+              <span style="padding:6px 12px; border-radius:999px; background:rgba(232,163,61,0.16); color:#E8A33D; font-size:12px; font-weight:700">В поиске</span>
+            </div>
+          </div>
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:6px">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px">
+              <div style="font-size:16px; font-weight:600; color:#FFFFFF">Помочь с переездом</div>
+              <div style="width:28px; height:28px; margin:-6px -6px 0 0; display:flex; align-items:center; justify-content:center; cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="12" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="19" cy="12" r="1.6" fill="#9BA29B"></circle></svg></div>
+            </div>
+            <div style="font-size:20px; font-weight:800; color:#4CAF50">5 500 ₽</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <span style="font-size:12px; font-weight:500; color:#6B716B">Сегодня, 14:30</span>
+              <span style="padding:6px 12px; border-radius:999px; background:rgba(76,175,80,0.14); color:#4CAF50; font-size:12px; font-weight:700">Исполнитель найден</span>
+            </div>
+          </div>
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:6px">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px">
+              <div style="font-size:16px; font-weight:600; color:#FFFFFF">Покосить траву</div>
+              <div style="width:28px; height:28px; margin:-6px -6px 0 0; display:flex; align-items:center; justify-content:center; cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="12" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="19" cy="12" r="1.6" fill="#9BA29B"></circle></svg></div>
+            </div>
+            <div style="font-size:20px; font-weight:800; color:#4CAF50">3 000 ₽</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <span style="font-size:12px; font-weight:500; color:#6B716B">Сегодня, 16:00</span>
+              <span style="padding:6px 12px; border-radius:999px; background:rgba(76,175,80,0.14); color:#4CAF50; font-size:12px; font-weight:700">В работе</span>
+            </div>
+          </div>
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:6px">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px">
+              <div style="font-size:16px; font-weight:600; color:#FFFFFF">Собрать мебель</div>
+              <div style="width:28px; height:28px; margin:-6px -6px 0 0; display:flex; align-items:center; justify-content:center; cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="12" cy="12" r="1.6" fill="#9BA29B"></circle><circle cx="19" cy="12" r="1.6" fill="#9BA29B"></circle></svg></div>
+            </div>
+            <div style="font-size:20px; font-weight:800; color:#4CAF50">2 500 ₽</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+              <span style="font-size:12px; font-weight:500; color:#6B716B">Сегодня, 18:00</span>
+              <span style="padding:6px 12px; border-radius:999px; background:#1E221E; color:#9BA29B; font-size:12px; font-weight:700">Завершён</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:none; position:relative; height:86px; background:#101210; border-top:1px solid #2A2E2A">
+          <div style="position:absolute; left:0; right:0; top:0; height:64px; display:flex; align-items:center; padding:0 6px; box-sizing:border-box">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6.5 8 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8Z" stroke="#6B716B" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Главная</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2.5" stroke="#4CAF50" stroke-width="1.8"></rect><path d="M9 9h6M9 13h6M9 17h3" stroke="#4CAF50" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#4CAF50">Заказы</span>
+            </div>
+            <div style="flex:1"></div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4V6.5Z" stroke="#6B716B" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Чат</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.5" r="3.7" stroke="#6B716B" stroke-width="1.8"></circle><path d="M5 20a7 7 0 0 1 14 0" stroke="#6B716B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Профиль</span>
+            </div>
+          </div>
+          <div style="position:absolute; left:50%; top:-18px; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:4px">
+            <div style="width:56px; height:56px; border-radius:50%; background:#4CAF50; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(76,175,80,0.32); cursor:pointer" style-active="background:#3D8B40">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:#6B716B">Создать</span>
+          </div>
+          <div style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:134px; height:5px; border-radius:999px; background:#2A2E2A"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 12. ЧАТ — ПЕРЕПИСКА ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">12 · чат — переписка</div>
+      <div data-screen-label="12 Чат" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box; flex:none">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+        <div style="flex:none; height:56px; display:flex; align-items:center; gap:10px; padding:0 16px 0 4px; border-bottom:1px solid #2A2E2A">
+          <div style="width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.5 5.5L8 12l6.5 6.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div style="position:relative; width:40px; height:40px; flex:none">
+            <div style="width:40px; height:40px; border-radius:50%; background:#2E5E2E; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:#FFFFFF">М</div>
+            <span style="position:absolute; right:-1px; bottom:-1px; width:11px; height:11px; border-radius:50%; background:#4CAF50; border:2px solid #0A0B0A"></span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:2px">
+            <div style="font-size:16px; font-weight:700; color:#FFFFFF">Магомед</div>
+            <div style="font-size:11px; font-weight:500; color:#4CAF50">В сети</div>
+          </div>
+        </div>
+        <div style="flex:none; margin:10px 16px 0; background:#151815; border:1px solid #2A2E2A; border-radius:12px; padding:10px 12px; display:flex; align-items:center; gap:10px">
+          <div style="width:34px; height:34px; border-radius:9px; background:#1E221E; display:flex; align-items:center; justify-content:center; flex:none">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 18h16l-2-7H6l-2 7Z" stroke="#4B524B" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+          </div>
+          <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:2px">
+            <div style="font-size:13px; font-weight:600; color:#FFFFFF; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">Вынести строительный мусор</div>
+            <div style="font-size:13px; font-weight:800; color:#4CAF50">8 000 ₽</div>
+          </div>
+          <div style="height:34px; padding:0 12px; border-radius:999px; border:1px solid #2A2E2A; display:flex; align-items:center; font-size:12px; font-weight:600; color:#FFFFFF; cursor:pointer" style-active="background:#1E221E">К заказу</div>
+        </div>
+
+        <div style="flex:1; overflow:hidden; padding:14px 16px 0; display:flex; flex-direction:column; gap:10px">
+          <div style="align-self:center; font-size:11px; font-weight:600; color:#6B716B; padding:4px 12px; border-radius:999px; background:#151815">Сегодня</div>
+          <div style="align-self:flex-start; max-width:76%; background:#1E221E; border-radius:14px 14px 14px 2px; padding:11px 13px 9px; display:flex; align-items:flex-end; gap:10px">
+            <div style="font-size:14px; font-weight:500; color:#FFFFFF; line-height:1.4">Здравствуйте! Готов выполнить ваш заказ.</div>
+            <span style="font-size:10px; font-weight:500; color:#6B716B; flex:none">11:30</span>
+          </div>
+          <div style="align-self:flex-end; max-width:76%; background:#2E5E2E; border-radius:14px 14px 2px 14px; padding:11px 13px 9px; display:flex; align-items:flex-end; gap:10px">
+            <div style="font-size:14px; font-weight:500; color:#FFFFFF; line-height:1.4">Здравствуйте! Когда сможете подъехать?</div>
+            <span style="font-size:10px; font-weight:500; color:#A8C9A8; flex:none">11:31</span>
+          </div>
+          <div style="align-self:flex-start; max-width:76%; background:#1E221E; border-radius:14px 14px 14px 2px; padding:11px 13px 9px; display:flex; align-items:flex-end; gap:10px">
+            <div style="font-size:14px; font-weight:500; color:#FFFFFF; line-height:1.4">Через 20 минут буду на месте.</div>
+            <span style="font-size:10px; font-weight:500; color:#6B716B; flex:none">11:32</span>
+          </div>
+          <div style="align-self:flex-end; max-width:76%; background:#2E5E2E; border-radius:14px 14px 2px 14px; padding:11px 13px 9px; display:flex; align-items:flex-end; gap:10px">
+            <div style="font-size:14px; font-weight:500; color:#FFFFFF; line-height:1.4">Хорошо, жду вас.</div>
+            <span style="font-size:10px; font-weight:500; color:#A8C9A8; flex:none">11:32</span>
+          </div>
+        </div>
+
+        <div style="flex:none; padding:12px 16px 28px; border-top:1px solid #2A2E2A; display:flex; flex-direction:column; gap:10px">
+          <div style="display:flex; align-items:center; gap:10px">
+            <div style="flex:1; height:48px; border-radius:12px; background:#151815; border:1px solid #2A2E2A; display:flex; align-items:center; gap:10px; padding:0 14px; box-sizing:border-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15.5 7.5l-6.8 6.8a2.6 2.6 0 0 0 3.7 3.7l7-7a4.4 4.4 0 0 0-6.2-6.2l-7 7a6.2 6.2 0 0 0 8.8 8.8l3.5-3.5" stroke="#6B716B" stroke-width="1.7" stroke-linecap="round"></path></svg>
+              <span style="font-size:15px; font-weight:500; color:#6B716B">Введите сообщение…</span>
+            </div>
+            <div style="width:48px; height:48px; border-radius:50%; background:#4CAF50; display:flex; align-items:center; justify-content:center; flex:none; cursor:pointer" style-active="background:#3D8B40">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M12 6l6 6-6 6" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+          <div style="width:134px; height:5px; border-radius:999px; background:#2A2E2A; margin:0 auto"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 13. ПРОФИЛЬ ========== -->
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:#6B716B">13 · профиль</div>
+      <div data-screen-label="13 Профиль" style="width:390px; height:844px; background:#0A0B0A; border:1px solid #2A2E2A; border-radius:44px; overflow:hidden; position:relative; display:flex; flex-direction:column">
+        <div style="height:56px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 8px; box-sizing:border-box; flex:none">
+          <div style="font-size:15px; font-weight:700; color:#FFFFFF">9:41</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <div style="display:flex; align-items:flex-end; gap:2px"><span style="width:3px; height:5px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:8px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:11px; background:#FFFFFF; border-radius:1px"></span><span style="width:3px; height:13px; background:#FFFFFF; border-radius:1px"></span></div>
+            <span style="width:24px; height:12px; border:1.5px solid #FFFFFF; border-radius:3px; display:inline-flex; align-items:center; padding:1.5px; box-sizing:border-box"><span style="width:100%; height:100%; background:#FFFFFF; border-radius:1.5px"></span></span>
+          </div>
+        </div>
+        <div style="flex:none; height:52px; display:flex; align-items:center; padding:0 4px 0 16px">
+          <div style="flex:1; text-align:center; font-size:20px; font-weight:700; color:#FFFFFF; margin-left:44px">Профиль</div>
+          <div style="width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 8h14M5 16h14" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"></path><circle cx="10" cy="8" r="2.4" stroke="#FFFFFF" stroke-width="1.8"></circle><circle cx="15" cy="16" r="2.4" stroke="#FFFFFF" stroke-width="1.8"></circle></svg>
+          </div>
+        </div>
+
+        <div style="flex:1; overflow:hidden; padding:2px 16px 0; display:flex; flex-direction:column; gap:10px">
+          <div style="display:flex; align-items:center; gap:14px">
+            <div style="width:72px; height:72px; border-radius:50%; background:#2E5E2E; display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:800; color:#FFFFFF; flex:none">И</div>
+            <div style="display:flex; flex-direction:column; gap:6px">
+              <div style="font-size:20px; font-weight:700; color:#FFFFFF">Ислам</div>
+              <div style="display:flex; align-items:center; gap:8px">
+                <span style="font-size:16px; font-weight:700; color:#FFFFFF">4.8</span>
+                <span style="font-size:14px; color:#FFC02D; letter-spacing:1px">★★★★★</span>
+              </div>
+              <div style="font-size:12px; font-weight:500; color:#9BA29B">126 отзывов</div>
+            </div>
+          </div>
+
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:11px 14px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+            <div style="display:flex; flex-direction:column; gap:4px">
+              <div style="font-size:11px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#9BA29B">Кошелёк</div>
+              <div style="font-size:26px; font-weight:800; color:#FFFFFF">12 650 ₽</div>
+            </div>
+            <button style="height:44px; padding:0 20px; border:none; border-radius:12px; background:#4CAF50; color:#FFFFFF; font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600; cursor:pointer" style-active="background:#3D8B40">Вывести</button>
+          </div>
+
+          <div style="display:flex; align-items:stretch; background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:10px 0">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px">
+              <div style="font-size:19px; font-weight:800; color:#FFFFFF">128</div>
+              <div style="font-size:11px; font-weight:500; color:#9BA29B; text-align:center; line-height:1.35">Выполнено<br>заказов</div>
+            </div>
+            <div style="width:1px; background:#2A2E2A"></div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px">
+              <div style="font-size:19px; font-weight:800; color:#FFFFFF">98%</div>
+              <div style="font-size:11px; font-weight:500; color:#9BA29B; text-align:center; line-height:1.35">Положительных<br>отзывов</div>
+            </div>
+            <div style="width:1px; background:#2A2E2A"></div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px">
+              <div style="font-size:19px; font-weight:800; color:#FFFFFF">2 года</div>
+              <div style="font-size:11px; font-weight:500; color:#9BA29B; text-align:center; line-height:1.35">на<br>платформе</div>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; background:#151815; border:1px solid #2A2E2A; border-radius:14px; padding:9px 14px">
+            <div style="font-size:15px; font-weight:600; color:#FFFFFF">Статус</div>
+            <div style="height:44px; padding:0 18px; border-radius:12px; background:#4CAF50; display:flex; align-items:center; gap:8px; cursor:pointer" style-active="background:#3D8B40">
+              <span style="width:9px; height:9px; border-radius:50%; background:#FFFFFF"></span>
+              <span style="font-size:15px; font-weight:600; color:#FFFFFF">На работе</span>
+            </div>
+          </div>
+
+          <div style="background:#151815; border:1px solid #2A2E2A; border-radius:14px; display:flex; flex-direction:column">
+            <div style="height:48px; display:flex; align-items:center; gap:12px; padding:0 14px; border-bottom:1px solid #2A2E2A; cursor:pointer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2.5" stroke="#9BA29B" stroke-width="1.7"></rect><path d="M9 10h6M9 14h4" stroke="#9BA29B" stroke-width="1.7" stroke-linecap="round"></path></svg>
+              <span style="flex:1; font-size:15px; font-weight:600; color:#FFFFFF">Мои заказы</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.5 6l6 6-6 6" stroke="#6B716B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <div style="height:48px; display:flex; align-items:center; gap:12px; padding:0 14px; border-bottom:1px solid #2A2E2A; cursor:pointer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 9.5h3.5L16 5v14l-7.5-4.5H5A1.5 1.5 0 0 1 3.5 13v-2A1.5 1.5 0 0 1 5 9.5Z" stroke="#9BA29B" stroke-width="1.7" stroke-linejoin="round"></path><path d="M19 9.5v5" stroke="#9BA29B" stroke-width="1.7" stroke-linecap="round"></path></svg>
+              <span style="flex:1; font-size:15px; font-weight:600; color:#FFFFFF">Мои объявления</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.5 6l6 6-6 6" stroke="#6B716B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <div style="height:48px; display:flex; align-items:center; gap:12px; padding:0 14px; border-bottom:1px solid #2A2E2A; cursor:pointer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4V6.5Z" stroke="#9BA29B" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+              <span style="flex:1; font-size:15px; font-weight:600; color:#FFFFFF">Мои отклики</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.5 6l6 6-6 6" stroke="#6B716B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <div style="height:48px; display:flex; align-items:center; gap:12px; padding:0 14px; border-bottom:1px solid #2A2E2A; cursor:pointer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.6-7-9.4A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.6c0 4.8-7 9.4-7 9.4Z" stroke="#9BA29B" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+              <span style="flex:1; font-size:15px; font-weight:600; color:#FFFFFF">Избранное</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.5 6l6 6-6 6" stroke="#6B716B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <div style="height:48px; display:flex; align-items:center; gap:12px; padding:0 14px; border-bottom:1px solid #2A2E2A; cursor:pointer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 4.5l2.3 4.8 5.2.7-3.8 3.6.9 5.2-4.6-2.5-4.6 2.5.9-5.2L4.5 10l5.2-.7L12 4.5Z" stroke="#9BA29B" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+              <span style="flex:1; font-size:15px; font-weight:600; color:#FFFFFF">Рейтинг и отзывы</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.5 6l6 6-6 6" stroke="#6B716B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <div style="height:48px; display:flex; align-items:center; gap:12px; padding:0 14px; cursor:pointer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 8h14M5 16h14" stroke="#9BA29B" stroke-width="1.7" stroke-linecap="round"></path><circle cx="10" cy="8" r="2.3" stroke="#9BA29B" stroke-width="1.7"></circle><circle cx="15" cy="16" r="2.3" stroke="#9BA29B" stroke-width="1.7"></circle></svg>
+              <span style="flex:1; font-size:15px; font-weight:600; color:#FFFFFF">Настройки</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9.5 6l6 6-6 6" stroke="#6B716B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:none; position:relative; height:86px; background:#101210; border-top:1px solid #2A2E2A">
+          <div style="position:absolute; left:0; right:0; top:0; height:64px; display:flex; align-items:center; padding:0 6px; box-sizing:border-box">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6.5 8 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8Z" stroke="#6B716B" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Главная</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2.5" stroke="#6B716B" stroke-width="1.8"></rect><path d="M9 9h6M9 13h6M9 17h3" stroke="#6B716B" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Заказы</span>
+            </div>
+            <div style="flex:1"></div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4V6.5Z" stroke="#6B716B" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#6B716B">Чат</span>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.5" r="3.7" stroke="#4CAF50" stroke-width="1.8"></circle><path d="M5 20a7 7 0 0 1 14 0" stroke="#4CAF50" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              <span style="font-size:11px; font-weight:600; color:#4CAF50">Профиль</span>
+            </div>
+          </div>
+          <div style="position:absolute; left:50%; top:-18px; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:4px">
+            <div style="width:56px; height:56px; border-radius:50%; background:#4CAF50; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(76,175,80,0.32); cursor:pointer" style-active="background:#3D8B40">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"></path></svg>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:#6B716B">Создать</span>
+          </div>
+          <div style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:134px; height:5px; border-radius:999px; background:#2A2E2A"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;selectedRole&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;seeker&quot;,&quot;client&quot;],&quot;default&quot;:&quot;seeker&quot;,&quot;tsType&quot;:&quot;'seeker'|'client'&quot;,&quot;section&quot;:&quot;Состояния&quot;},&quot;activeSegment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;all&quot;,&quot;near&quot;,&quot;top&quot;],&quot;default&quot;:&quot;near&quot;,&quot;tsType&quot;:&quot;'all'|'near'|'top'&quot;,&quot;section&quot;:&quot;Состояния&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      role: props.selectedRole ?? 'seeker',
+      seg: props.activeSegment ?? 'all'
+    };
+  }
+  renderVals() {
+    const role = this.state.role, seg = this.state.seg;
+    const on = '#4CAF50', off = '#2A2E2A';
+    const segBg = k => seg === k ? '#4CAF50' : 'transparent';
+    const segFg = k => seg === k ? '#FFFFFF' : '#9BA29B';
+    return {
+      seekerBorder: role === 'seeker' ? on : off,
+      clientBorder: role === 'client' ? on : off,
+      seekerCheck: role === 'seeker' ? 'flex' : 'none',
+      clientCheck: role === 'client' ? 'flex' : 'none',
+      pickSeeker: () => this.setState({ role: 'seeker' }),
+      pickClient: () => this.setState({ role: 'client' }),
+      seg0: () => this.setState({ seg: 'all' }),
+      seg1: () => this.setState({ seg: 'near' }),
+      seg2: () => this.setState({ seg: 'top' }),
+      seg0Bg: segBg('all'), seg1Bg: segBg('near'), seg2Bg: segBg('top'),
+      seg0Color: segFg('all'), seg1Color: segFg('near'), seg2Color: segFg('top')
+    };
+  }
+}
+
+</script>
+</body>
+</html>
