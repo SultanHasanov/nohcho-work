@@ -66,7 +66,7 @@
   --size-textarea: 82px;
   --size-cta: 52px;
   --size-cta-tall: 56px;
-  --size-statusbar: 56px;
+  --size-statusbar: 12px;
   --size-tabbar: 86px;
   --size-tabrow: 64px;
 
@@ -132,7 +132,7 @@
   min-height: var(--size-textarea);
 }
 @utility h-statusbar {
-  height: var(--size-statusbar);
+  height: max(var(--size-statusbar), env(safe-area-inset-top));
 }
 @utility h-tabbar {
   height: var(--size-tabbar);
